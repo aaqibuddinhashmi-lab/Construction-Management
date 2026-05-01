@@ -525,8 +525,8 @@ class BuildIQ {
                     </div>
 
                     <!-- Drone Telemetry Bar -->
-                    <div style="display:grid; grid-template-columns:repeat(5, 1fr); gap:12px; margin-top:16px;">
-                        <div style="text-align:center; padding:12px; background:var(--glass-bg); border-radius:var(--radius-md); border:1px solid var(--border);">
+                    <div class="swipe-container" style="display:flex; gap:12px; margin-top:16px; margin-bottom: 0;">
+                        <div class="swipe-card" style="flex: 0 0 auto; text-align:center; padding:12px 24px; background:var(--glass-bg); border-radius:var(--radius-md); border:1px solid var(--border);">
                             <span style="font-size:10px; color:var(--text-muted); text-transform:uppercase; font-weight:700; display:block; margin-bottom:4px;">Altitude</span>
                             <strong style="font-size:18px;" id="drone-altitude">${drone.altitude}</strong>
                         </div>
@@ -549,7 +549,7 @@ class BuildIQ {
                     </div>
 
                     <!-- Drone Control Buttons -->
-                    <div style="display:flex; gap:10px; margin-top:14px;">
+                    <div class="mobile-column-actions" style="display:flex; gap:10px; margin-top:14px;">
                         <button class="btn ghost" id="drone-capture-btn" style="flex:1; height:40px;"><i data-lucide="camera"></i> Capture Snapshot</button>
                         <button class="btn ghost" id="drone-return-btn" style="flex:1; height:40px;"><i data-lucide="home"></i> Return to Base</button>
                         <button class="btn ghost" id="drone-ai-scan-btn" style="flex:1; height:40px;"><i data-lucide="scan"></i> AI Re-Scan</button>
@@ -829,13 +829,13 @@ class BuildIQ {
             <div class="dashboard-grid">
                 <div class="card span-12">
                     <div class="card-top"><span>Predictive AI Waste Models</span><i data-lucide="brain"></i></div>
-                    <div style="display:flex; gap:20px;">
-                        <div style="flex:1; padding:20px; background:rgba(255,255,255,0.02); border:1px solid var(--border); border-radius:var(--radius-md);">
+                    <div class="swipe-container" style="display:flex; gap:20px;">
+                        <div class="swipe-card" style="flex:1; padding:20px; background:rgba(255,255,255,0.02); border:1px solid var(--border); border-radius:var(--radius-md);">
                             <strong style="color:var(--danger); display:block; margin-bottom:8px;"><i data-lucide="alert-triangle" style="width:16px;"></i> High Risk: Concrete Waste</strong>
                             <p style="font-size:13px; color:var(--text-secondary); line-height:1.5;">Based on current forming techniques on Tower B, the AI predicts a 12% over-consumption of concrete in the next pour. Recommend switching to modular formworks.</p>
-                            <button class="btn ghost" style="margin-top:12px; height:28px; font-size:12px;">Review Action Plan</button>
+                            <button class="btn ghost" style="margin-top:12px; height:32px; font-size:12px; width: 100%;">Review Action Plan</button>
                         </div>
-                        <div style="flex:1; padding:20px; background:rgba(255,255,255,0.02); border:1px solid var(--border); border-radius:var(--radius-md);">
+                        <div class="swipe-card" style="flex:1; padding:20px; background:rgba(255,255,255,0.02); border:1px solid var(--border); border-radius:var(--radius-md);">
                             <strong style="color:var(--success); display:block; margin-bottom:8px;"><i data-lucide="check-circle" style="width:16px;"></i> Optimal: Steel Rebar</strong>
                             <p style="font-size:13px; color:var(--text-secondary); line-height:1.5;">Cut-off waste is maintained below 2%. The automated cutting schedules generated last week have successfully reduced scrap by 1.4 tons.</p>
                         </div>
@@ -997,9 +997,9 @@ class BuildIQ {
                             <span>${pr.name}</span>
                             <div class="badge ${pr.delayRisk > 40 ? 'danger' : pr.delayRisk > 20 ? 'warning' : 'success'}">${pr.delayRisk}% risk</div>
                         </div>
-                        <div style="display:flex; gap:16px; align-items:center;">
-                            <img src="${BuildIQData.images[pr.imageKey]}" style="width:140px; height:90px; object-fit:cover; border-radius:var(--radius-sm);" alt="${pr.name}">
-                            <div style="flex:1">
+                        <div class="mobile-column project-details-grid" style="display:flex; gap:16px; align-items:center;">
+                            <img src="${BuildIQData.images[pr.imageKey]}" class="project-thumb" style="width:140px; height:90px; object-fit:cover; border-radius:var(--radius-sm);" alt="${pr.name}">
+                            <div style="flex:1; width: 100%;">
                                 <strong style="font-size:22px; display:block; margin-bottom:4px;">${pr.completion}% Complete</strong>
                                 <div class="progress-bar"><div class="progress-fill" style="width:${pr.completion}%"></div></div>
                                 <p style="font-size:12px; color:var(--text-muted); margin-top:10px;">${pr.location} · ${pr.team} workers · ${pr.phase}</p>
@@ -1009,9 +1009,9 @@ class BuildIQ {
                                 </div>
                             </div>
                         </div>
-                        <div style="display:flex; gap:8px; margin-top:16px; padding-top:16px; border-top:1px solid var(--border);">
-                            <button class="btn ghost" style="flex:1; height:32px; font-size:12px;"><i data-lucide="eye"></i> View details</button>
-                            <button class="btn ghost" style="flex:1; height:32px; font-size:12px;"><i data-lucide="archive"></i> Archive</button>
+                        <div class="mobile-column-actions" style="display:flex; gap:8px; margin-top:16px; padding-top:16px; border-top:1px solid var(--border);">
+                            <button class="btn ghost" style="flex:1; height:40px; font-size:13px;"><i data-lucide="eye"></i> View details</button>
+                            <button class="btn ghost" style="flex:1; height:40px; font-size:13px;"><i data-lucide="archive"></i> Archive</button>
                         </div>
                     </div>
                 `).join("")}
@@ -1046,7 +1046,8 @@ class BuildIQ {
                 `).join("")}
                 <div class="card span-12">
                     <div class="card-top"><span>Active Teams</span></div>
-                    <table class="data-table">
+                    <div style="overflow-x: auto;">
+                        <table class="data-table" style="min-width: 600px;">
                         <thead>
                             <tr>
                                 <th>Team</th><th>Count</th><th>Attendance</th><th>Productivity</th>
@@ -1327,40 +1328,42 @@ class BuildIQ {
                             <button class="badge ghost" style="border-color:var(--border)">Clients</button>
                         </div>
                     </div>
-                    <table class="data-table">
-                        <thead>
-                            <tr>
-                                <th>Name</th><th>Role</th><th>Email</th><th>Status</th><th>Last Active</th><th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><div style="display:flex;align-items:center;gap:10px;"><div class="avatar" style="width:24px;height:24px;font-size:10px;">RS</div><strong>Riya Shah</strong></div></td>
-                                <td>Engineer</td><td>riya@buildiq.ai</td><td><div class="badge success">Active</div></td><td>2 min ago</td>
-                                <td><button class="btn ghost" style="height:28px;padding:0 8px;"><i data-lucide="more-horizontal"></i></button></td>
-                            </tr>
-                            <tr>
-                                <td><div style="display:flex;align-items:center;gap:10px;"><div class="avatar" style="width:24px;height:24px;font-size:10px;">KS</div><strong>Karan Singh</strong></div></td>
-                                <td>Worker</td><td>karan@buildiq.ai</td><td><div class="badge success">On Site</div></td><td>Now</td>
-                                <td><button class="btn ghost" style="height:28px;padding:0 8px;"><i data-lucide="more-horizontal"></i></button></td>
-                            </tr>
-                            <tr>
-                                <td><div style="display:flex;align-items:center;gap:10px;"><div class="avatar" style="width:24px;height:24px;font-size:10px;">VK</div><strong>Vikram Kapoor</strong></div></td>
-                                <td>Client</td><td>vikram@kapoor.com</td><td><div class="badge info">Viewing</div></td><td>1h ago</td>
-                                <td><button class="btn ghost" style="height:28px;padding:0 8px;"><i data-lucide="more-horizontal"></i></button></td>
-                            </tr>
-                            <tr>
-                                <td><div style="display:flex;align-items:center;gap:10px;"><div class="avatar" style="width:24px;height:24px;font-size:10px;">IA</div><strong>Imran Ali</strong></div></td>
-                                <td>Contractor</td><td>imran@build.co</td><td><div class="badge warning">Away</div></td><td>3h ago</td>
-                                <td><button class="btn ghost" style="height:28px;padding:0 8px;"><i data-lucide="more-horizontal"></i></button></td>
-                            </tr>
-                            <tr>
-                                <td><div style="display:flex;align-items:center;gap:10px;"><div class="avatar" style="width:24px;height:24px;font-size:10px;">MI</div><strong>Meera Iyer</strong></div></td>
-                                <td>Architect</td><td>meera@design.in</td><td><div class="badge success">Active</div></td><td>15 min ago</td>
-                                <td><button class="btn ghost" style="height:28px;padding:0 8px;"><i data-lucide="more-horizontal"></i></button></td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <div style="overflow-x: auto;">
+                        <table class="data-table" style="min-width: 600px;">
+                            <thead>
+                                <tr>
+                                    <th>Name</th><th>Role</th><th>Email</th><th>Status</th><th>Last Active</th><th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><div style="display:flex;align-items:center;gap:10px;"><div class="avatar" style="width:24px;height:24px;font-size:10px;">RS</div><strong>Riya Shah</strong></div></td>
+                                    <td>Engineer</td><td>riya@buildiq.ai</td><td><div class="badge success">Active</div></td><td>2 min ago</td>
+                                    <td><button class="btn ghost" style="height:28px;padding:0 8px;"><i data-lucide="more-horizontal"></i></button></td>
+                                </tr>
+                                <tr>
+                                    <td><div style="display:flex;align-items:center;gap:10px;"><div class="avatar" style="width:24px;height:24px;font-size:10px;">KS</div><strong>Karan Singh</strong></div></td>
+                                    <td>Worker</td><td>karan@buildiq.ai</td><td><div class="badge success">On Site</div></td><td>Now</td>
+                                    <td><button class="btn ghost" style="height:28px;padding:0 8px;"><i data-lucide="more-horizontal"></i></button></td>
+                                </tr>
+                                <tr>
+                                    <td><div style="display:flex;align-items:center;gap:10px;"><div class="avatar" style="width:24px;height:24px;font-size:10px;">VK</div><strong>Vikram Kapoor</strong></div></td>
+                                    <td>Client</td><td>vikram@kapoor.com</td><td><div class="badge info">Viewing</div></td><td>1h ago</td>
+                                    <td><button class="btn ghost" style="height:28px;padding:0 8px;"><i data-lucide="more-horizontal"></i></button></td>
+                                </tr>
+                                <tr>
+                                    <td><div style="display:flex;align-items:center;gap:10px;"><div class="avatar" style="width:24px;height:24px;font-size:10px;">IA</div><strong>Imran Ali</strong></div></td>
+                                    <td>Contractor</td><td>imran@build.co</td><td><div class="badge warning">Away</div></td><td>3h ago</td>
+                                    <td><button class="btn ghost" style="height:28px;padding:0 8px;"><i data-lucide="more-horizontal"></i></button></td>
+                                </tr>
+                                <tr>
+                                    <td><div style="display:flex;align-items:center;gap:10px;"><div class="avatar" style="width:24px;height:24px;font-size:10px;">MI</div><strong>Meera Iyer</strong></div></td>
+                                    <td>Architect</td><td>meera@design.in</td><td><div class="badge success">Active</div></td><td>15 min ago</td>
+                                    <td><button class="btn ghost" style="height:28px;padding:0 8px;"><i data-lucide="more-horizontal"></i></button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         `;

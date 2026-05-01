@@ -134,16 +134,14 @@
 
     #module-kicker,
     .search-box,
-    .user-info,
-    .top-bar-right > .icon-btn,
-    .top-bar-right .action-buttons {
+    .u-info,
+    .top-bar-actions {
         display: none;
     }
 
-    .user-profile {
-        padding: 4px;
-        border-radius: var(--radius-md);
-        border-color: transparent;
+    .user-btn {
+        padding: 0;
+        border: none;
         background: transparent;
     }
 
@@ -253,6 +251,20 @@
     .composition-layout,
     .quick-action-grid {
         grid-template-columns: 1fr;
+    }
+
+    .mobile-column {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+    }
+
+    .mobile-column > .project-thumb {
+        width: 100% !important;
+        height: 180px !important;
+    }
+
+    .mobile-column-actions {
+        flex-direction: column !important;
     }
 
     .swipe-container {
@@ -375,7 +387,7 @@
         border-top: 1px solid var(--border);
         background: rgba(8, 9, 11, 0.94);
         backdrop-filter: blur(18px);
-        display: grid;
+        display: grid !important;
         grid-template-columns: repeat(5, 1fr);
         gap: 4px;
     }
