@@ -137,6 +137,17 @@ class BuildIQ {
             </div>
         `).join("");
 
+        // Mobile Nav
+        const mobileNav = document.getElementById("mobile-nav");
+        if (mobileNav && roleConfig.mobileNav) {
+            mobileNav.innerHTML = roleConfig.mobileNav.map(item => `
+                <div class="mobile-nav-item ${this.currentModule === item.id ? 'active' : ''}" data-module="${item.id}">
+                    <i data-lucide="${item.icon}"></i>
+                    <span>${item.label}</span>
+                </div>
+            `).join("");
+        }
+
         // Topbar
         document.getElementById("user-name").textContent = user.name;
         document.getElementById("user-role-label").textContent = user.role;
@@ -148,7 +159,7 @@ class BuildIQ {
 
     switchModule(moduleId) {
         this.currentModule = moduleId;
-        document.querySelectorAll(".nav-item").forEach(item => {
+        document.querySelectorAll(".nav-item, .mobile-nav-item").forEach(item => {
             item.classList.toggle("active", item.dataset.module === moduleId);
         });
         document.getElementById("module-title").textContent = moduleId.charAt(0).toUpperCase() + moduleId.slice(1);

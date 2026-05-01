@@ -317,7 +317,7 @@
         height: 62vh;
     }
 
-    .ai-assistant-trigger {
+    .ai-fab {
         right: 18px;
         bottom: 92px;
         width: 54px;
@@ -361,6 +361,10 @@
         border-color: rgba(255, 122, 26, 0.34);
         background: rgba(255, 122, 26, 0.12);
         color: var(--accent-2);
+    }
+
+    #toast-container {
+        bottom: 96px !important;
     }
 }
 
